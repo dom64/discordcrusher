@@ -1,0 +1,86 @@
+#!/bin/sh
+
+# Messages
+msgspam() {
+	curl -Ss -H "Authorization: $1" -H "Content-Type: application/json" -X POST -d "{\"content\": \"$3\"}" https://discordapp.com/api/channels/$2/messages >> /dev/null
+}
+
+# Nicknames
+nickspam() {
+	curl -Ss -H "Authorization: $1" -H "Content-Type: application/json" -X PATCH -d "{\"nick\": \"$3\"}" https://discordapp.com/api/guilds/$2/members/@me/nick >> /dev/null
+	}
+
+
+
+# Help page
+if [ -z $1 ] || [ $1 == "-h" ] || [ $1 == "--help" ]
+then
+	echo "discordcrush (A minimalist raiding tool)
+
+Message spam: discordcrush -m [TOKEN] [CHANNEL ID] [MESSAGE] 
+Nickname scrambler: discordcrush -n [TOKEN] [SERVER ID] [NICKNAME]
+Both: discordcrush -b [TOKEN] [SERVER ID] [CHANNEL ID] [MESSAGE] [NICKNAME]
+
+Putting random on [MESSAGE] and/or [NICKNAME] will produce random strings to output.
+Putting a path to file with text on [MESSAGE] and/or [NICKNAME] will choose a random line to output.
+"	
+fi
+
+# Spam messages
+while [[ $1 == "-m" ]]
+do
+	if [[ $4 = "random" ]] || [ -z $4 ]
+	then
+		MESSAGE=$(cat /dev/urandom | tr -dc 'a-zA-Z1-9' | fold -w 2000 | head -n 1)
+	elif [ -f $4 ]
+	then
+		MESSAGE=$(shuf -n 1 $4)
+	else
+		MESSAGE=$4
+	fi
+	msgspam $2 $3 $MESSAGE
+	sleep 1
+done
+
+# Scramble nicknames
+while [[ $1 == "-n" ]]
+do
+	if [ -z $4 ] 
+	then
+		NAME=$(cat /dev/urandom | tr -dc 'a-zA-Z' | fold -w 1 | head -n 1)
+	elif [ -f $4 ]
+	then
+		NAME=$(shuf -n 1 $4)
+	else
+		NAME=$(cat /dev/urandom | tr -dc 'a-zA-Z' | fold -w 1 | head -n 1)
+	fi
+	nickspam $2 $3 $NAME
+	sleep 1
+done
+
+# Both of them at the same time
+while [[ $1 == "-b" ]]
+do
+	if [[ $5 == random ]] || [ -z $5 ]
+	then
+		MESSAGE=$(cat /dev/urandom | tr -dc 'a-zA-Z1-9' | fold -w 2000 | head -n 1)
+	elif [ -f $5 ]
+	then
+		MESSAGE=$(shuf -n 1 $5)
+	else
+		MESSAGE=$5
+	fi
+	if [ -z $6 ] 
+	then
+		NAME=$(cat /dev/urandom | tr -dc 'a-zA-Z' | fold -w 1 | head -n 1)
+	elif [ -f $6 ]
+	then
+		NAME=$(shuf -n 1 $6)
+	else
+		NAME=$(cat /dev/urandom | tr -dc 'a-zA-Z' | fold -w 1 | head -n 1)
+	fi
+	msgspam $2 $4 $MESSAGE 
+	nickspam $2 $3 $NAME
+	sleep 1
+done
+
