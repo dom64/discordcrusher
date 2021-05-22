@@ -11,4 +11,7 @@ Multiple instances of this script can be run simultaneously on different Discord
 This script also has the option to set the users nick name to a random letter (within a certain range to prevent it from showing up too high in the member list) at 1 second intervals.
 There is also the option to either run both the message spammer and the nickname scrambler simultaneously, or one seperately.
 
+Pinging users: <@userid>
+Pinging roles: <@&roleid>
+
 THIS WAS MADE JUST FOR FUN. PLEASE DO NOT USE THIS SCRIPT TO BREAK DISCORD TOS.
