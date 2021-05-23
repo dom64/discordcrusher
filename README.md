@@ -1,17 +1,31 @@
+# What is this
+
+This is a dumb shell script I made to spam messages and change nicknames very quickly in discord.
+Messages get send every second and/or nickname gets changed every second depending on what parameters you set.
+You can have multiple instances running with multiple accounts.
+This was my first real shell script I made so it isn't as clean as I wanted to be.
+
 # Requirements
 
-- CURL
+- [CURL](https://curl.se/)
 - POSIX compliant shell
+- GNU Coreutils or a similar replacement
 
 # Usage
 
-This is a shell script that can be used to spam either the same, or randomized messages to any specified channel in the server.
-Messages are sent at a 1 second interval to circumvent both discord rate limiting, and spam protection from bots.
-Multiple instances of this script can be run simultaneously on different Discord tokens, allowing it to make up for the 1 second delay between messages.
-This script also has the option to set the users nick name to a random letter (within a certain range to prevent it from showing up too high in the member list) at 1 second intervals.
-There is also the option to either run both the message spammer and the nickname scrambler simultaneously, or one seperately.
+Message spam:
+`discordcrush -m <token> <channel id> <random/file/message>`
+Nickname scrambler:
+`discordcrush -n <token> <server id> <random/file>`
+Both:
+`discordcrush -b <token> <server id> <channel id> <random/file/message> <random/file>`
+
+# Notes
+
+Nickname changing can only happen every second so setting it lower will get you rate limited.
+Spamming messages can be set to less then 1 second if you manually change the script but might cause some issues (around 0.7 seems fine mostly).
 
 Pinging users: <@userid>
 Pinging roles: <@&roleid>
 
-THIS WAS MADE JUST FOR FUN. PLEASE DO NOT USE THIS SCRIPT TO BREAK DISCORD TOS.
+Made for fun and not to break TOS :)
