@@ -1,7 +1,7 @@
 # Requirements
 
-CURL
-POSIX complaint shell
+- CURL
+- POSIX compliant shell
 
 # Usage
 
