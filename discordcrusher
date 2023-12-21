@@ -15,11 +15,11 @@ nickspam() {
 # Help page
 if [ -z "$1" ] || [ "$1" = "-h" ] || [ "$1" = "--help" ]
 then
-	echo "discordcrush (A minimalist raiding tool)
+	echo "discordcrusher (A minimalist raiding tool)
 
-Message spam: discordcrush -m [TOKEN] [CHANNEL ID] [MESSAGE] 
-Nickname scrambler: discordcrush -n [TOKEN] [SERVER ID] [NICKNAME]
-Both: discordcrush -b [TOKEN] [SERVER ID] [CHANNEL ID] [MESSAGE] [NICKNAME]
+Message spam: discordcrusher -m [TOKEN] [CHANNEL ID] [MESSAGE] 
+Nickname scrambler: discordcrusher -n [TOKEN] [SERVER ID] [NICKNAME]
+Both: discordcrusher -b [TOKEN] [SERVER ID] [CHANNEL ID] [MESSAGE] [NICKNAME]
 
 Putting random on [MESSAGE] and/or [NICKNAME] will produce random strings to output.
 Putting a path to file with text on [MESSAGE] and/or [NICKNAME] will choose a random line to output.
