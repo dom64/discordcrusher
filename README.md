@@ -18,15 +18,15 @@ This was my first real shell script I made so it isn't as clean as I wanted to b
 
 Message spam:
 
-`discordcrush -m <token> <channel id> <random/file/message>`
+`discordcrusher -m <token> <channel id> <random/file/message>`
 
 Nickname scrambler:
 
-`discordcrush -n <token> <server id> <random/file>`
+`discordcrusher -n <token> <server id> <random/file>`
 
 Both:
 
-`discordcrush -b <token> <server id> <channel id> <random/file/message> <random/file>`
+`discordcrusher -b <token> <server id> <channel id> <random/file/message> <random/file>`
 
 # Notes
 
