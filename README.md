@@ -1,6 +1,6 @@
 # What is this
 
-This is a dumb shell script I made to spam messages and change nicknames very quickly in discord.
+This is a shell script I made to spam messages and change nicknames very quickly in discord.
 
 Messages get send every second and/or nickname gets changed every second depending on what parameters you set.
 
